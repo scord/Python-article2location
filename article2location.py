@@ -7,7 +7,7 @@ def locations():
 	f = open("countries.json")
 	data = json.load(f)
 	return data
-    
+
 def subject(url):
 	ls = locations()
 	a = article(url)
@@ -45,7 +45,7 @@ def subject(url):
 			score += counts[l['subregion'].replace(" ", "")]
 
 		smallWords = ["in","is","as","to","at","be","of","it","mr","ms","by","me","my","no","mp","la","on"]
-		
+
 		for spelling in l['altSpellings']:
 			if len(spelling) >= 2 and spelling not in smallWords:
 				if spelling in counts:
@@ -67,8 +67,8 @@ def makeLowercase(location):
 	l['subregion'] = location['subregion'].lower()
 	l['altSpellings'] = location['altSpellings']
 
-	for s in l['altSpellings']:
-		s = s.lower()
+	for i in range(len(l['altSpellings'])):
+        l['altSpellings'][i] = l['altSpellings'][i].lower()
 
 	return l
 
